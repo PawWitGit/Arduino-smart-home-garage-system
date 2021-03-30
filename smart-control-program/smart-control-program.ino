@@ -35,7 +35,7 @@ void loop () {
   sterowanie_bramy(); // wywołanie funkcji sterującej //silnikiem bramy
 }
 
-void zalacz_oswietlenie_wewnetrzne()
+void zalacz_oswietlenie_zewnetrzne()
 {
   if (digitalRead(wykryto_ruch) == HIGH) { //jeśli wykryto                    //ruch
     digitalWrite(osw_zewn, HIGH); //załącz oświetlnenie                      //zewnętrzne
@@ -63,7 +63,7 @@ void zalacz_oswietlenie_wewnetrzne()
     digitalWrite(osw_wewn, HIGH); //załącz oświetlenie //wewnętrzne 
   }
 }
-void sterowanie_bramy(
+void sterowanie_bramy()
 {
 if (irrecv.decode(&signals)) {  //dekodowanie sygnału //z pilota
     Serial.println(signals.decode_type);  //wyświetl na 
@@ -93,7 +93,7 @@ if (irrecv.decode(&signals)) {  //dekodowanie sygnału //z pilota
       stepper.step (krok);   //otwórz bramę
       liczSilnik++;  //blokada przed ponowny otwieraniem,
      //brama otwarta 
-
+    }
     else
     {
       digitalWrite(8, LOW);  // blokada silnika w pozycji //otwartej 
